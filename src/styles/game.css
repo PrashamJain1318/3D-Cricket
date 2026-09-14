@@ -1,0 +1,279 @@
+/* Cricket Vision AI Specific Game Styles */
+
+.game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.canvas-viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* UI Overlay Layer */
+.ui-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.interactive-ui {
+  pointer-events: auto;
+}
+
+/* Broadcast Top Score Bar */
+.tv-scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 18px;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.85) 100%);
+  border-left: 4px solid var(--accent-gold);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.score-main {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.score-runs {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: 'Chakra Petch', sans-serif;
+  line-height: 1;
+}
+
+.score-slash {
+  font-size: 1.6rem;
+  color: var(--accent-gold);
+}
+
+.score-wickets {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fca5a5;
+}
+
+.overs-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+/* Over Ball Dots */
+.over-balls-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ball-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: 'Chakra Petch', sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ball-dot.boundary-four {
+  background: #0284c7;
+  color: white;
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.5);
+}
+
+.ball-dot.boundary-six {
+  background: #f59e0b;
+  color: #0f172a;
+  border-color: #fbbf24;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+}
+
+.ball-dot.wicket {
+  background: #e11d48;
+  color: white;
+  border-color: #f43f5e;
+  box-shadow: 0 0 12px rgba(225, 29, 72, 0.6);
+}
+
+/* Webcam Preview Picture-in-Picture */
+.camera-pip {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 220px;
+  height: 165px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(6, 182, 212, 0.6);
+  background: #000;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(6, 182, 212, 0.2);
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+.camera-pip:hover {
+  transform: scale(1.05);
+  border-color: #06b6d4;
+}
+
+.camera-pip video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Mirror view */
+}
+
+.camera-pip canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.camera-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.camera-dot-pulse {
+  width: 7px;
+  height: 7px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Vision Status Widget */
+.vision-hud-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
+  min-width: 170px;
+  border-left: 3px solid #06b6d4;
+}
+
+.confidence-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.confidence-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #06b6d4, #10b981);
+  border-radius: 3px;
+  transition: width 0.2s ease;
+}
+
+/* Big Notification Banner */
+.banner-center {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  z-index: 50;
+  animation: popBanner 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popBanner {
+  0% { transform: translate(-50%, -50%) scale(0.4); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.banner-title {
+  font-size: 4.5rem;
+  font-weight: 900;
+  font-family: 'Chakra Petch', sans-serif;
+  text-transform: uppercase;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 0 40px currentColor;
+  letter-spacing: 0.08em;
+}
+
+.banner-title.six {
+  color: #f59e0b;
+}
+
+.banner-title.four {
+  color: #38bdf8;
+}
+
+.banner-title.wicket {
+  color: #f43f5e;
+}
+
+.banner-title.perfect {
+  color: #10b981;
+}
+
+/* Modals */
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 7, 18, 0.82);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.modal-content {
+  max-width: 580px;
+  width: 90%;
+  padding: 30px;
+}
